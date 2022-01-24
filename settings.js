@@ -28,7 +28,7 @@ process.env.CLIENTID = "$(CLIENTID)",
 process.env.JWT = "$(JWT)",
 process.env.HOSTNAME = "$(HOSTNAME)",
 process.env.DATATOPICPATH = "$(DATATOPICPATH)",
-process.env.RESULTSTOPICPATH = "$RESULTSTOPICPATH",
+process.env.RESULTSTOPICPATH = "$(RESULTSTOPICPATH)",
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
