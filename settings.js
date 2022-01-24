@@ -13,8 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-process.env.CLIENTID = "putclientidhere",
-process.env.JWT = "putjwthere",
+
+
+// Define each variable below- CLIENTID, JWT, HOSTNAME, DATATOPICPATH, RESULTSTOPICPATH-
+// CLIENTID - MQTT Client ID in use
+// JWT = json Web Token assigned to that client
+// HOSTNAME = DNS name of the MQTT Broker
+// DATATOPICPATH = The topic path for the publish/subscribe of the latency test. The Client ID
+// must have publish/subscribe rights to this topic path.
+// RESULTSTOPICPATH = The topic path the clients will publish latency results to, and read those
+// results from when graphing latency. The Client ID must have publish/subscribe rights to this topic path
+
+process.env.CLIENTID = "$(CLIENTID)",
+process.env.JWT = "$(JWT)",
+process.env.HOSTNAME = "$(HOSTNAME)",
+process.env.DATATOPICPATH = "$(DATATOPICPATH)",
+process.env.RESULTSTOPICPATH = "$RESULTSTOPICPATH",
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
