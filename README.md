@@ -26,7 +26,7 @@ a node-RED MQTT client that executes the following flows-
   These values can be defined in a few ways-
   
   -Through the GUI of node-RED, which is available at http://localhost:1880/ when the container is launched.
-  -by replacing the values within settings.js manually.
+  -by replacing the values within settings.js manually. The container will need to be restarted after changing the settings.js file.
 
 
 ### Usage
