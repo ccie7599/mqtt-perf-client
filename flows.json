@@ -19,7 +19,7 @@
         "id": "3c9fafa.7dd6a5",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "$(HOSTNAME)",
+        "broker": "$(BROKER)",
         "port": "8883",
         "tls": "2d748829.2503d8",
         "clientid": "$(CLIENTID)",
@@ -56,7 +56,7 @@
         "certname": "",
         "keyname": "",
         "caname": "",
-        "servername": "$(HOSTNAME)",
+        "servername": "$(BROKER)",
         "verifyservercert": true,
         "alpnprotocol": ""
     },
@@ -127,8 +127,7 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
+                "edited": false
             },
             "darkTheme": {
                 "default": "#097479",

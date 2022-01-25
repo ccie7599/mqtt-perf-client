@@ -26,7 +26,7 @@
 
 process.env.CLIENTID = "$(CLIENTID)",
 process.env.JWT = "$(JWT)",
-process.env.HOSTNAME = "$(HOSTNAME)",
+process.env.BROKER = "$(BROKER)",
 process.env.DATATOPICPATH = "$(DATATOPICPATH)",
 process.env.RESULTSTOPICPATH = "$(RESULTSTOPICPATH)",
 
