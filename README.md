@@ -13,9 +13,9 @@ a node-RED MQTT client that executes the following flows-
   -Publishes this on-going latnecy result, along with publish-subscribe GEO infromation, to a another topic (RESULTSTOPICPATH).
   -subscribes to RESULTSTOPICPATH, and graphs the latency to http://localhost:1880/ui/
   
-  ### Usage
+  ### Setup
   
-  The following values need to be provided-
+  The following variable values need to be provided-
   
   CLIENTID- the MQTT Client ID for the connection to the broker.
   JWT - the json web token (JWT) for broker authentication.
@@ -31,5 +31,21 @@ a node-RED MQTT client that executes the following flows-
   ```
   docker run -it -p 1880:1880 -env CLIENTID={clientid} -env JWT={JWT} -env HOSTNAME={hostname} -env DATATOPICPATH={datatopicpath} -env RESULTSTOPICPATH={resultstopicpath} -v node_red_data:/data brianapley/mqtt-perf-client
 ```
+
+### Usage
+
+Once it's been determined how the variables will be set, the container can be launched via the following command-
+
+```
+  docker run -it -p 1880:1880 -env CLIENTID={clientid} -env JWT={JWT} -env HOSTNAME={hostname} -env DATATOPICPATH={datatopicpath} -env RESULTSTOPICPATH={resultstopicpath} -v node_red_data:/data brianapley/mqtt-perf-client
+  ```
+  
+  Again, the variables can also be set via the node-RED GUI, or by manually updating the settings.js file (which will be in the /data directory of the volume that docker creates on container launch).
+  
+  The client will begin to send one message per second to the DATATOPICPATH, and subscribe to all messages from the same path. If only one client is running, it will determine latency on it's own messages. If more than one client is running, each client will see it's own messages along with the messages of all the other clients. This allows for a full-mesh, realtime view of latency to and from different endpoint locations.
+  
+  Each client also subscribes to the results messages, and graphs them via the node-RED dashboard, which can be found on http://localhost:1880/. Clicking each entry in the graph legend can enable/disable graphing for that source-destination pair.
+  
+  
 
   
