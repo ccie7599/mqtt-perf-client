@@ -19,30 +19,27 @@ a node-RED MQTT client that executes the following flows-
   
   CLIENTID- the MQTT Client ID for the connection to the broker.
   JWT - the json web token (JWT) for broker authentication.
-  HOSTNAME- the hostname of the MQTT broker.
+  BROKER- the hostname of the MQTT broker.
   DATATOPICPATH - the MQTT topic path used for the generated messages described above.
   RESULTSTOPICPATH - the MQTT topic path used for latency results messages described above.
   
   These values can be defined in a few ways-
   
-  -Through the GUI of node-RED, which is avialable at http://localhost:1880/ when the container is launched.
+  -Through the GUI of node-RED, which is available at http://localhost:1880/ when the container is launched.
   -by replacing the values within settings.js manually.
-  -by defining the variables at docker run-time, i.e. 
-  ```
-  docker run -it -p 1880:1880 -env CLIENTID={clientid} -env JWT={JWT} -env HOSTNAME={hostname} -env DATATOPICPATH={datatopicpath} -env RESULTSTOPICPATH={resultstopicpath} -v node_red_data:/data brianapley/mqtt-perf-client
-```
+
 
 ### Usage
 
 Once it's been determined how the variables will be set, the container can be launched via the following command-
 
 ```
-  docker run -it -p 1880:1880 -env CLIENTID={clientid} -env JWT={JWT} -env HOSTNAME={hostname} -env DATATOPICPATH={datatopicpath} -env RESULTSTOPICPATH={resultstopicpath} -v node_red_data:/data brianapley/mqtt-perf-client
+  docker run -it -p 1880:1880 -v node_red_data:/data brianapley/mqtt-perf-client
   ```
   
-  Again, the variables can also be set via the node-RED GUI, or by manually updating the settings.js file (which will be in the /data directory of the volume that docker creates on container launch).
+  Again, the variables can be set via the node-RED GUI, or by manually updating the settings.js file (which will be in the /data directory of the volume that docker creates on container launch).
   
-  The client will begin to send one message per second to the DATATOPICPATH, and subscribe to all messages from the same path. If only one client is running, it will determine latency on it's own messages. If more than one client is running, each client will see it's own messages along with the messages of all the other clients. This allows for a full-mesh, realtime view of latency to and from different endpoint locations.
+  The client will begin to send one message per second to the DATATOPICPATH, and subscribe to all messages from the same path. If only one client is running, it will determine latency on its own messages. If more than one client is running, each client will see it's own messages along with the messages of all the other clients. This allows for a full-mesh, realtime view of latency to and from different endpoint locations.
   
   Each client also subscribes to the results messages, and graphs them via the node-RED dashboard, which can be found on http://localhost:1880/. Clicking each entry in the graph legend can enable/disable graphing for that source-destination pair.
   
