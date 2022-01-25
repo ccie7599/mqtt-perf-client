@@ -18,7 +18,7 @@
 // Define each variable below- CLIENTID, JWT, HOSTNAME, DATATOPICPATH, RESULTSTOPICPATH-
 // CLIENTID - MQTT Client ID in use
 // JWT = json Web Token assigned to that client
-// HOSTNAME = DNS name of the MQTT Broker
+// BROKER = DNS name of the MQTT Broker
 // DATATOPICPATH = The topic path for the publish/subscribe of the latency test. The Client ID
 // must have publish/subscribe rights to this topic path.
 // RESULTSTOPICPATH = The topic path the clients will publish latency results to, and read those
